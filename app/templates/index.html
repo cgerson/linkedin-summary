@@ -30,11 +30,12 @@
 <html>
     <head>
         <title>LinkedIn Summary MadLibs</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
         <h1>LinkedIn Summary Generator</h1>
         <h3>Fill in the blanks below and click "generate summary".</h3>
-        <div>
+        <div class = "summary-form">
             <p>Noun <input type = "text" name = "noun1" /></p>
             <p>Adjective <input type = "text" name = "adj1" /></p>
             <p>Adjective <input type = "text" name = "adj2" /></p>
@@ -47,10 +48,13 @@
             <p>Plural Noun <input type = "text" name = "plnoun2" /></p>
             <p>Plural Noun <input type = "text" name = "plnoun3" /></p>
         </div>
-        <div style="margin: 40px">
+        <div class = "summary-result">
             <span id=result>[SUMMARY WILL APPEAR HERE]</span>
         </div>
-        <a href=# id=summary>generate summary</a>
+        <div class = "submit">
+            <a href=# id=summary>generate summary</a>
+        </div>
+        
 
     </body>
 </html>
