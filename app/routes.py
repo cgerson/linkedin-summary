@@ -25,7 +25,7 @@ def return_summary():
 
 # helper
 def build_summary(result_dict):
-    wildcards = ['relentlessly', 'tenaciously', 'persistently', 'insatiably']
+    wildcards = ['relentlessly', 'tenaciously', 'persistently', 'insatiably', 'bombastically', 'yair-tastically']
 
     first_part = "I am a {0}".format(random.choice(wildcards))
 
