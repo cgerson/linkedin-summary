@@ -18,7 +18,7 @@ def return_summary():
 
     words_dict = {}
     for word in words:
-        words_dict[word] = request.args.get(word, '', type=str)
+        words_dict[word] = request.args.get(word, '', type=str).lower()
     summary = build_summary(words_dict)
 
     return jsonify(result=summary)
