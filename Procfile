@@ -1,0 +1,1 @@
+web: gunicorn ds_api:app --timeout 120
