@@ -1,9 +1,40 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
+<script type=text/javascript>
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  </script>
+
+<script type=text/javascript>
+    $(function() {
+      $('a#summary').bind('click', function() {
+        $.getJSON($SCRIPT_ROOT + '/_return_summary', {
+          noun1: $('input[name="noun1"]').val(),
+          adj1: $('input[name="adj1"]').val(),
+          adj2: $('input[name="adj2"]').val(),
+          adj3: $('input[name="adj3"]').val(),
+          plnoun1: $('input[name="plnoun1"]').val(),
+          plnoun2: $('input[name="plnoun2"]').val(),
+          plnoun3: $('input[name="plnoun3"]').val(),
+          verb1: $('input[name="verb1"]').val(),
+          verb2: $('input[name="verb2"]').val(),
+          verb3: $('input[name="verb3"]').val(),
+          verb4: $('input[name="verb4"]').val()
+        }, function(data) {
+          $("#result").text(data.result);
+        });
+        return false;
+      });
+    });
+  </script>
+
 <html>
     <head>
-        <title>Generate a LinkedIn Summary HERE</title>
+        <title>LinkedIn Summary MadLibs</title>
     </head>
     <body>
-        <form action = "http://localhost:5000/result" method = "POST">
+        <h1>LinkedIn Summary Generator</h1>
+        <h3>Fill in the blanks below and click "generate summary".</h3>
+        <div>
             <p>Noun <input type = "text" name = "noun1" /></p>
             <p>Adjective <input type = "text" name = "adj1" /></p>
             <p>Adjective <input type = "text" name = "adj2" /></p>
@@ -15,7 +46,11 @@
             <p>Plural Noun <input type = "text" name = "plnoun1" /></p>
             <p>Plural Noun <input type = "text" name = "plnoun2" /></p>
             <p>Plural Noun <input type = "text" name = "plnoun3" /></p>
-            <p><input type = "submit" value = "submit" /></p>
-         </form>
+        </div>
+        <div style="margin: 40px">
+            <span id=result>[SUMMARY WILL APPEAR HERE]</span>
+        </div>
+        <a href=# id=summary>generate summary</a>
+
     </body>
 </html>
