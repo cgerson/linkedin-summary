@@ -1,3 +1,4 @@
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
 <script type=text/javascript>
@@ -13,7 +14,7 @@
     </head>
     <body>
         <h1>LinkedIn Summary Generator</h1>
-        <h3>Fill in the blanks below and click "generate summary".</h3>
+        <h3>Fill in the fields below and click "generate summary".</h3>
         <form id ="wordentry" class = "summary-form">
             <p>Noun <input type = "text" name = "noun1" maxlength="30" /></p>
             <p>Adjective <input type = "text" name = "adj1" maxlength="30" /></p>
@@ -28,13 +29,17 @@
             <p>Plural Noun <input type = "text" name = "plnoun3" maxlength="30" /></p>
         </form>
         <div class = "error" id = "error"></div>
+        <hr>
         <div class = "summary-result">
-            <span id=result>[SUMMARY WILL APPEAR HERE]</span>
+            <span id = "result" class="result">[SUMMARY WILL APPEAR HERE]</span>
         </div>
-        <div class = "submit" id = "submit">
-            <button type ='submit' id='summary'>Generate Summary</button>
+        <hr>
+        <div id = "actions" class = "actions">
+            <button type ="submit" class="primary" id ="summary">Generate Summary</button>
+            <button type ="submit" class="secondary" id ="copybtn">Copy Summary</button>
         </div>
 
+        <input type = "text" id="result-copy" class="result-copy" />
 
     </body>
 </html>

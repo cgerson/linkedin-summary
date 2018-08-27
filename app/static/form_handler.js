@@ -1,7 +1,6 @@
 console.log("loaded form handler");
 
-// form validation
-  $(function() {
+  $(function() { // form validation
     $('button#summary').bind('click', function(event) {
         var elements = document.forms['wordentry'].elements;
         var error_free=true;
@@ -12,13 +11,20 @@ console.log("loaded form handler");
             break;
             }
           }
+
     if (!error_free){
       //event.preventDefault();
-      console.log("but error!!! oh no")
+      console.log("but error!!! oh no");
       var s = document.getElementById('error');
       s.innerHTML = "Fill All Fields!";
      }
-    else{
+
+    else{ // clear error field
+
+      console.log("forms validated");
+      var s = document.getElementById('error');
+      s.innerHTML = "";
+
       $.post($SCRIPT_ROOT + '/_return_summary', {
         noun1: $('input[name="noun1"]').val(),
         adj1: $('input[name="adj1"]').val(),
@@ -33,6 +39,22 @@ console.log("loaded form handler");
         verb4: $('input[name="verb4"]').val()
       }, function(data) {
         $("#result").text(data.result);
+        $("#result-copy").val(data.result); // set as invisible input value for copy clipboard purposes
       });
      }
    })});
+
+   $(function() { // copy to clipboard
+     $('button#copybtn').bind('click', function(event) {
+        var copyTextarea = document.querySelector('.result-copy');
+        copyTextarea.focus();
+        copyTextarea.select();
+        try {
+          var successful = document.execCommand('copy');
+          var msg = successful ? 'successful' : 'unsuccessful';
+          console.log('Copying text command was ' + msg);
+        } catch (err) {
+          console.log('Oops, unable to copy');
+        }
+
+     })});
