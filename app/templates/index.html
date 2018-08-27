@@ -4,28 +4,7 @@
     $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
   </script>
 
-<script type=text/javascript>
-    $(function() {
-      $('a#summary').bind('click', function() {
-        $.getJSON($SCRIPT_ROOT + '/_return_summary', {
-          noun1: $('input[name="noun1"]').val(),
-          adj1: $('input[name="adj1"]').val(),
-          adj2: $('input[name="adj2"]').val(),
-          adj3: $('input[name="adj3"]').val(),
-          plnoun1: $('input[name="plnoun1"]').val(),
-          plnoun2: $('input[name="plnoun2"]').val(),
-          plnoun3: $('input[name="plnoun3"]').val(),
-          verb1: $('input[name="verb1"]').val(),
-          verb2: $('input[name="verb2"]').val(),
-          verb3: $('input[name="verb3"]').val(),
-          verb4: $('input[name="verb4"]').val()
-        }, function(data) {
-          $("#result").text(data.result);
-        });
-        return false;
-      });
-    });
-  </script>
+<script src="{{url_for('static', filename='form_handler.js')}}"></script>
 
 <html>
     <head>
@@ -35,8 +14,8 @@
     <body>
         <h1>LinkedIn Summary Generator</h1>
         <h3>Fill in the blanks below and click "generate summary".</h3>
-        <div class = "summary-form">
-            <p>Noun <input type = "text" name = "noun1" /></p>
+        <form id ="wordentry" class = "summary-form">
+            <p>Noun <input type = "text" name = "noun1" required /></p>
             <p>Adjective <input type = "text" name = "adj1" /></p>
             <p>Adjective <input type = "text" name = "adj2" /></p>
             <p>Adjective <input type = "text" name = "adj3" /></p>
@@ -47,14 +26,15 @@
             <p>Plural Noun <input type = "text" name = "plnoun1" /></p>
             <p>Plural Noun <input type = "text" name = "plnoun2" /></p>
             <p>Plural Noun <input type = "text" name = "plnoun3" /></p>
-        </div>
+        </form>
+        <div class = "error" id = "error"></div>
         <div class = "summary-result">
             <span id=result>[SUMMARY WILL APPEAR HERE]</span>
         </div>
-        <div class = "submit">
-            <a href=# id=summary>generate summary</a>
+        <div class = "submit" id = "submit">
+            <button type ='submit' id='summary'>Generate Summary</button>
         </div>
-        
+
 
     </body>
 </html>

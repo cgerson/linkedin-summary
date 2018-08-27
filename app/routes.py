@@ -1,8 +1,8 @@
 from flask_restful import Resource, reqparse
 from app import api
 from app import app
-from flask import request, jsonify
 
+from flask import request, jsonify
 from flask import render_template
 
 import random
@@ -11,14 +11,20 @@ import random
 def home():
     return render_template('index.html')
 
-@app.route('/_return_summary')
+@app.route('/_return_summary', methods=['POST', 'GET'])
 def return_summary():
-    
+# initially built as a get request, updated to post request to take advantage of request.form
+
     words = ['adj1', 'adj2', 'adj3', 'verb1', 'verb2', 'verb3', 'verb4', 'plnoun1', 'plnoun2', 'plnoun3', 'noun1']
 
-    words_dict = {}
-    for word in words:
-        words_dict[word] = request.args.get(word, '', type=str).lower()
+    if request.method == 'POST':
+        words_dict = request.form
+
+    else:
+        words_dict = {}
+        for word in words:
+            words_dict[word] = request.args.get(word, '', type=str).lower()
+
     summary = build_summary(words_dict)
 
     return jsonify(result=summary)
