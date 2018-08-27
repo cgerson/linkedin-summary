@@ -5,7 +5,7 @@ h1              { border-bottom: 2px solid #eee; }
 h2              { font-size: 1.5em; }
 h3              { font-size: 1.2em; }
 form.summary-form   {margin-top: 20px; margin-bottom: 20px; text-align:center;}
-div.summary-result   {margin: 40px; text-align:center; position: relative; vertical-align: middle;}
+div.summary-result   {margin: 40px; vertical-align: middle; word-wrap: break-word; text-align:center; position: relative;}
 div.error       {color: #ff3300;}
 div.actions     {text-align:center;}
 button {
@@ -36,4 +36,4 @@ button.secondary:hover{
   color: #000000;
   background-color: #eee;
 }
-.result-copy         {color: transparent; border: none; background: transparent; outline: none;}
+.result-copy         {color: transparent; border: none; background: transparent; outline: none; margin-top: 30px;}

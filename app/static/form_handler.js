@@ -6,7 +6,7 @@ console.log("loaded form handler");
         var error_free=true;
         for (i=0; i<elements.length; i++){
           if(elements[i].value.length == 0){
-            error_free = false;
+            error_free = true;
             //alert("Fill All Fields!");
             break;
             }
