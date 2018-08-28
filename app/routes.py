@@ -31,7 +31,7 @@ def return_summary():
 
 # helper
 def build_summary(result_dict):
-    wildcards = ['a relentlessly', 'a tenaciously', 'a persistently', 'an insatiably', 'a bombastically', 'a yair-tastically']
+    wildcards = ['a relentlessly', 'a tenaciously', 'a persistently', 'an insatiably', 'a bombastically', 'a perpetually']
 
     first_part = "I am {0}".format(random.choice(wildcards))
 
@@ -44,5 +44,5 @@ def build_summary(result_dict):
 def result():
     if request.method == 'POST':
       result = request.form
-      summary = create_summary(result)
+      summary = build_summary(result)
       return render_template("result.html",s = summary)
